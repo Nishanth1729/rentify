@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const propertySchema = new Schema({
+    place: { type: String, required: true },
+    area: { type: Number, required: true },
+    bedrooms: { type: Number, required: true },
+    bathrooms: { type: Number, required: true },
+    nearbyFacilities: { type: String },
+    seller: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+}, { timestamps: true });
+
+module.exports = mongoose.model('Property', propertySchema);
