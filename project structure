@@ -1,0 +1,11 @@
+rentify-backend/
+├── models/
+│   ├── User.js
+│   ├── Property.js
+├── routes/
+│   ├── auth.js
+│   ├── properties.js
+├── middleware/
+│   └── auth.js
+├── .env
+├── server.js
