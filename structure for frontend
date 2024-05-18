@@ -1,0 +1,15 @@
+rentify-frontend/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Login.js
+│   │   ├── Register.js
+│   │   ├── PropertyForm.js
+│   │   ├── PropertyList.js
+│   ├── pages/
+│   │   ├── HomePage.js
+│   │   ├── Dashboard.js
+│   ├── App.js
+│   ├── index.js
+├── package.json
+└── package-lock.json
