@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const PropertyForm = () => {
+    const [place, setPlace] = useState('');
+    const [area, setArea] = useState('');
+    const [bedrooms, setBedrooms] = useState('');
+    const [bathrooms, setBathrooms] = useState('');
+    const [nearbyFacilities, setNearbyFacilities] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const token = localStorage.getItem('token');
+            await axios.post('http://localhost:5000/api/properties', {
+                place,
+                area,
+                bedrooms,
+                bathrooms,
+                nearbyFacilities
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            alert('Property posted successfully');
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <h2>Post a Property</h2>
+            <input type="text" placeholder="Place" value={place} onChange={(e) => setPlace(e.target.value)} required />
+            <input type="number" placeholder="Area" value={area} onChange={(e) => setArea(e.target.value)} required />
+            <input type="number" placeholder="Bedrooms" value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} required />
+            <input type="number" placeholder="Bathrooms" value={bathrooms} onChange={(e) => setBathrooms(e.target.value)} required />
+            <textarea placeholder="Nearby Facilities" value={nearbyFacilities} onChange={(e) => setNearbyFacilities(e.target.value)} />
+            <button type="submit">Post Property</button>
+        </form>
+    );
+};
+
+export default PropertyForm;
